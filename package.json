@@ -1,0 +1,104 @@
+{
+  "name": "react-live-preview",
+  "displayName": "React Live Preview",
+  "description": "Instantly preview React/JSX components in a side panel. Auto-resolves npm imports via CDN — no build step, no config.",
+  "version": "1.0.0",
+  "publisher": "your-publisher-id",
+  "author": {
+    "name": "Your Name"
+  },
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#0a0e1a",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/react-live-preview"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/react-live-preview/issues"
+  },
+  "homepage": "https://github.com/your-username/react-live-preview#readme",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "react",
+    "jsx",
+    "preview",
+    "live",
+    "renderer",
+    "component",
+    "recharts",
+    "d3",
+    "hot reload"
+  ],
+  "activationEvents": [
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "reactLivePreview.open",
+        "title": "React Live Preview: Open",
+        "icon": {
+          "light": "images/icon-light.svg",
+          "dark": "images/icon-dark.svg"
+        }
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "reactLivePreview.open",
+        "key": "ctrl+shift+v",
+        "mac": "cmd+shift+v",
+        "when": "editorLangId == javascriptreact || editorLangId == typescriptreact"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "reactLivePreview.open",
+          "when": "editorLangId == javascriptreact || editorLangId == typescriptreact",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "reactLivePreview.open",
+          "when": "editorLangId == javascriptreact || editorLangId == typescriptreact"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "React Live Preview",
+      "properties": {
+        "reactLivePreview.liveReload": {
+          "type": "string",
+          "enum": ["onChange", "onSave", "off"],
+          "default": "onSave",
+          "description": "When to refresh the preview panel."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@vscode/vsce": "^2.0.0",
+    "typescript": "^5.0.0"
+  }
+}
